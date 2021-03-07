@@ -73,7 +73,7 @@
 .ca-content .links {margin:20px 0 0; padding:0;}
 .ca-content .links li {float:left; margin-left:15px; }
 .ca-content .links li:first-child {margin-left:0; }
-.ca-content .links li a {display:block; padding:0 10px; background:#CD2122; color:#fff; line-height:30px; border-radius:2px; }
+.ca-content .links li a {display:block; padding:0 10px; background:#0e4e9e; color:#fff; line-height:30px; border-radius:2px; }
 .ca-content .links li a span { margin:3px 10px 0 0; }
 .ca-content .links li.price a {background:#333; font-weight:700; }
 .ca-content .links li a:hover { background:#000; }
@@ -103,11 +103,11 @@ ul.other_images li img {
 -webkit-transition-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550);
         transition-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 }
-.title_circle {width:110px; height:110px; text-align:center; color: white; font-size: 13px; padding: 12px; display: table; line-height: 1.4; background-color:#CD2122; position:absolute; border-radius:50%; box-shadow:3px 3px 1px rgba(0,0,0,0.5); }
+.title_circle {width:110px; height:110px; text-align:center; color: white; font-size: 13px; padding: 12px; display: table; line-height: 1.4; background-color:#0e4e9e; position:absolute; border-radius:50%; box-shadow:3px 3px 1px rgba(0,0,0,0.5); }
 .title_circle[data-size="small"] {width:80px; height:80px; font-size: 11px; padding: 8px; }
 .title_circle[data-size="medium"] {width:95px; height:95px; font-size: 12px; padding: 10px; }
 .title_circle span {display:table-cell; vertical-align:middle; position:relative; z-index:1; }
-.title_circle:before {content:''; position:absolute; top:7px; left:7px; background:#CD2122; width:30px; height:30px; border-radius:3px; }
+.title_circle:before {content:''; position:absolute; top:7px; left:7px; background:#0e4e9e; width:30px; height:30px; border-radius:3px; }
 .title_circle[data-position="top-left"]:before { top:7px; left:7px;}
 .title_circle[data-position="top-right"]:before { top:7px; right:7px; left: auto;}
 .title_circle[data-position="bottom-left"]:before { bottom:7px; left:7px; top:auto;}

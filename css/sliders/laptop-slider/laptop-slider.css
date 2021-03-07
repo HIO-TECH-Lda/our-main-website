@@ -20,7 +20,7 @@
 .ls-slider-item__img {position: absolute; top:0; left:0; right:0; bottom: 0; background-position: center top; background-size: cover; background-repeat: no-repeat;}
 
 /* Caption - Just Laptop View */
-.ls--laptop .ls__item-caption {position: absolute; bottom: 30px; z-index:1; color: #fff; background-color: #000; border-left: 3px solid #cd2122; padding: 3px 20px; font-size: 18px; opacity: 0; left: 100px; -webkit-transition:opacity .3s ease-out .4s, left .3s ease-out .4s; transition:opacity .3s ease-out .4s, left .3s ease-out .4s; }
+.ls--laptop .ls__item-caption {position: absolute; bottom: 30px; z-index:1; color: #fff; background-color: #000; border-left: 3px solid #0e4e9e; padding: 3px 20px; font-size: 18px; opacity: 0; left: 100px; -webkit-transition:opacity .3s ease-out .4s, left .3s ease-out .4s; transition:opacity .3s ease-out .4s, left .3s ease-out .4s; }
 .ls--laptop .ls__item-caption a {color:#fff;}
 .ls--laptop .item--active .ls__item-caption {left: 30px; opacity: 1; }
 
@@ -48,7 +48,7 @@
 .ls__nav-item {display: inline-block; width: 15px; height: 4px; margin: 0; background: #444; opacity: .4; margin-left: 5px; cursor: pointer; position:relative; border-radius: 2px; -webkit-transition: opacity .3s ease-in-out, width .3s ease-in-out; transition: opacity .3s ease-in-out, width .3s ease-in-out; }
 .ls__nav-item:first-child {margin-left: 0;}
 .ls__nav-item:hover { opacity:1; }
-.ls__nav-item.selected { opacity:1; width: 27px; background-color: #cd2122;}
+.ls__nav-item.selected { opacity:1; width: 27px; background-color: #0e4e9e;}
 
 /* Slider Arrows */
 .ls__arrows {position: absolute; top: 0; width: 100%; text-align: center; z-index: 1; }

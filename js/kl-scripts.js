@@ -1263,7 +1263,7 @@ var KallyasConfig = {
 		$(document.body).on('appear', '.fundedperc .chart', function() {
 			jQuery('.chart').easyPieChart({
 				animate: 2000,
-				barColor : typeof chart.attr('data-color') != 'undefined' ? chart.attr('data-color') : '#CD2122',
+				barColor : typeof chart.attr('data-color') != 'undefined' ? chart.attr('data-color') : '#0e4e9e',
 				trackColor: false,
 				lineWidth: 16,
 				size: 300,

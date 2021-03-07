@@ -906,13 +906,13 @@
 		.process_box .number span { transform: translateY(-50%); -webkit-transform: translateY(-50%) }
 		.process_box[data-align=right] .content { text-align: right; }
 		.process_box .content:before, .process_box .content:after { -webkit-transition: all .25s ease-in-out; transition: all .25s ease-in-out; }
-		.process_box .content:before { position: absolute; content: ''; top: 0; width: 2px; height: 100%; background-color: #cd2122; }
+		.process_box .content:before { position: absolute; content: ''; top: 0; width: 2px; height: 100%; background-color: #0e4e9e; }
 		.process_box[data-align=left] .content:before {  left: 240px; }
 		.process_box[data-align=right] .content:before { right: 240px; }
 		.process_box:hover .content:before { width: 5px; }
 		.process_box .content:after { position: absolute; content: ''; border: 14px solid; border-color: transparent; top: 50%; margin-top: -14px; }
-		.process_box[data-align=left] .content:after { left: 242px; border-left-color: #cd2122; }
-		.process_box[data-align=right] .content:after { right: 242px; border-right-color: #cd2122; }
+		.process_box[data-align=left] .content:after { left: 242px; border-left-color: #0e4e9e; }
+		.process_box[data-align=right] .content:after { right: 242px; border-right-color: #0e4e9e; }
 		.process_box[data-align=left]:hover .content:after { left: 245px; }
 		.process_box[data-align=right]:hover .content:after { right: 245px; }
 
