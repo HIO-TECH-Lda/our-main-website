@@ -24,7 +24,7 @@
 				iconsize: [32, 39], // w, h
 				iconanchor: [13,39] // x, y
 			},
-			html: '<div style="width: 300px; padding: 15px;"><h3 style="margin-bottom: 15px;">Hogash Studio</span></h3><p class="nobottommargin"><span style="line-height:1.4;">KALLYAS TEMPLATE, THE <span class="fw-semibold">SWISS ARMY SECRET</span> FOR BUILDING THE MODERN WEBSITE</span></p></div>',
+			html: '<div style="width: 300px; padding: 15px;"><h3 style="margin-bottom: 15px;">HIO TECH OFFICE</span></h3><p class="nobottommargin"><span style="line-height:1.4;">KALLYAS TEMPLATE, THE <span class="fw-semibold">SWISS ARMY SECRET</span> FOR BUILDING THE MODERN WEBSITE</span></p></div>',
 		},{
 			address: "18-77 Madison St, Flushing, NY 11385",
 			latitude: 40.703871,
@@ -34,7 +34,7 @@
 				iconsize: [32, 39], // w, h
 				iconanchor: [13, 39] // x, y
 			},
-			html: '<div style="width: 300px; padding: 15px;"><h3 style="margin-bottom: 15px;">Hogash Studio</span></h3><p class="nobottommargin"><span style="line-height:1.4;">KALLYAS TEMPLATE, THE <span class="fw-semibold">SWISS ARMY SECRET</span> FOR BUILDING THE MODERN WEBSITE</span></p></div>',
+			html: '<div style="width: 300px; padding: 15px;"><h3 style="margin-bottom: 15px;">HIO TECH OFFICE</span></h3><p class="nobottommargin"><span style="line-height:1.4;">KALLYAS TEMPLATE, THE <span class="fw-semibold">SWISS ARMY SECRET</span> FOR BUILDING THE MODERN WEBSITE</span></p></div>',
 		}];
 		
 		// Map Color Scheme - more styles here http://snazzymaps.com/
