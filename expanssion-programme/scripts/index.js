@@ -66,23 +66,17 @@ if (formStep2) {
       Vantagens: ${fields.advantages};\n
     `;
     const autoReply = `Obrigado por se candidatar:
-      <br></br>
-      <br></br>
+       \n\n
       ${fields.applicantName.split(" ")[0]},
-      <br></br>
-      <br></br>
+       \n\n
       Obrigado por reservar um tempo para se candidatar ao nosso cargo. Agradecemos seu interesse em trabalhar na HIO TECH como <Angariador de Clientes>.
-      <br></br>
-      <br></br>
+       \n\n
       No momento, estamos em processo de candidaturas para esta posição. Começaremos a fazer entrevistas nas próximas quatro semanas (apenas candidatos selecionados serão contactados). Se você for selecionado para continuar com o processo de entrevista, nosso departamento de recursos humanos entrará em contato com você até 20 de Junho de 2021.
-      <br></br>
-      <br></br>
+       \n\n
       Obrigado,
-      <br></br>
-      <br></br>
+       \n\n
       Helton Furau,
-      <br></br>
-      <br></br>
+       \n\n
       CEO`;
     fetch("https://hiomail-api.herokuapp.com/api/v1/messages/send", {
       method: "POST",
