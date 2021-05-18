@@ -24,8 +24,8 @@ showAlert('warning', 'Bem Vindo(a), preencha os campos muito cuidadosamente para
 if (formStep1) {
   formStep1.addEventListener("submit", (event) => {
     event.preventDefault();
-    fields.applicationEmail = formStep1.querySelector("#email").value.trim();
-    fields.applicationName = formStep1.querySelector("#name").value.trim();
+    fields.applicantEmail = formStep1.querySelector("#email").value.trim();
+    fields.applicantName = formStep1.querySelector("#name").value.trim();
     fields.subject = "HIO TECH EXPANSION PROGRAMME S012021";
     fields.birthDate = formStep1.querySelector("#birth_date").value.trim();
     fields.phoneNumber = formStep1.querySelector("#phone_number").value.trim();
@@ -51,7 +51,7 @@ if (formStep2) {
     backButton.disabled = true;
     const subject = "HIO TECH EXPANSION PROGRAMME S012021";
     const body = `
-      Nome: ${fields.applicationName};\n
+      Nome: ${fields.applicantName};\n
       Data de nascimento: ${fields.birthDate};\n
       Número de celular: ${fields.phoneNumber};\n
       Email: ${fields.applicantEmail};\n
@@ -68,7 +68,7 @@ if (formStep2) {
     const autoReply = `Obrigado por se candidatar:
       <br></br>
       <br></br>
-      ${fields.applicationName.split(" ")[0]},
+      ${fields.applicantName.split(" ")[0]},
       <br></br>
       <br></br>
       Obrigado por reservar um tempo para se candidatar ao nosso cargo. Agradecemos seu interesse em trabalhar na HIO TECH como <Angariador de Clientes>.
@@ -90,8 +90,8 @@ if (formStep2) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        visitorName: fields.applicationName,
-        visitorEmail: fields.applicationEmail,
+        visitorName: fields.applicantName,
+        visitorEmail: fields.applicantEmail,
         subject,
         body,
         autoReply,
