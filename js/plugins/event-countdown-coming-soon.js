@@ -20,7 +20,7 @@
         e && t.extend(o, e), a(), interval = setInterval(a, 1e3)
     }
 }(jQuery), jQuery(".sc_counter").countdown({
-    date: "18 may 2021 10:00:00",
+    date: "18 may 2021 15:00:00",
     format: "on"
 }, function() {
     alert("Welcome!")
