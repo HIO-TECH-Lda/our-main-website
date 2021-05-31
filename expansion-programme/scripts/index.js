@@ -34,7 +34,7 @@ if (formStep1) {
     fields.city = formStep1.querySelector("#city").value.trim();
     fields.province = formStep1.querySelector("#province").value.trim();
     fields.zipCode = formStep1.querySelector("#zipcode").value.trim();
-    console.log(fields);
+
     formStep1.classList.add("form__invisible");
     formStep2.classList.remove("form__invisible");
   });
@@ -100,6 +100,7 @@ if (formStep2) {
         backButton.disabled = false;
 
         showAlert('success', "A sua candidatura foi submetida! Verifique o seu e-mail, verifique também na aba promoções caso não encontre uma mensagem nossa.", 20, true);
+        document.querySelectorAll('.form__input').forEach( e => e.value  = '');
       });
   });
 }
