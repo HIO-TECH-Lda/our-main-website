@@ -483,8 +483,8 @@ body {
 }
 
 .pricing-card {
-  width: 29%;
-  height: 350px;
+  width: 49.9%;
+  height: 580px;
   background-color: var(--color-primary);
   border-radius: var(--rounded);
   padding: 2rem;
@@ -492,7 +492,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  /* justify-content: space-around; */
 }
 @media only screen and (max-width: 700px) {
   .pricing-card {
@@ -542,14 +542,13 @@ body {
 }
 .pricing-card--popular {
   background-color: var(--color-dark-blue);
-  width: 33%;
-  height: 400px;
+  width: 50%;
   min-width: 36rem;
 }
 .pricing-card__list {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 @media only screen and (max-width: 700px) {

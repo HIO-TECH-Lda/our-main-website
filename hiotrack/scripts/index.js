@@ -29,6 +29,9 @@ if(form) {
     values.address = form.querySelector('#address').value;
     values.province = form.querySelector('#province').value;
     values.type = form.querySelector('#individual').checked ? 'individual' : 'empresa';
+
+    if (!values.phone.match(/^(84|85|86|87|83|82)\d{7}$/))
+    return alert('Número de telefone inválido');
     
     const subject = "ADESÃO HIOTRACK";
     const body = `
