@@ -33,7 +33,7 @@ if (formStep1) {
     fields.country = formStep1.querySelector("#country").value.trim();
     fields.city = formStep1.querySelector("#city").value.trim();
     fields.province = formStep1.querySelector("#province").value.trim();
-    fields.zipCode = formStep1.querySelector("#zipcode").value.trim();
+    // fields.zipCode = formStep1.querySelector("#zipcode").value.trim();
     console.log(fields);
     formStep1.classList.add("form__invisible");
     formStep2.classList.remove("form__invisible");
@@ -49,7 +49,7 @@ if (formStep2) {
     fields.advantages = formStep2.querySelector("#advantages").value.trim();
     formStep2.querySelector("#submit").innerText = "Submetendo...";
     backButton.disabled = true;
-    const subject = "HIO TECH EXPANSION PROGRAMME S012021";
+    const subject = "HIO TECH EXPANSION PROGRAMME S012022";
     const body = `
       Nome: ${fields.applicantName};\n
       Data de nascimento: ${fields.birthDate};\n
@@ -59,7 +59,7 @@ if (formStep2) {
       Pais: ${fields.country};\n
       Cidade: ${fields.city};\n
       Provincia: ${fields.province};\n
-      Código Postal: ${fields.zipCode};\n
+
       Habilidades: ${fields.skills};\n
       Porque: ${fields.why};\n
       Serviços: ${fields.services};\n
@@ -69,9 +69,9 @@ if (formStep2) {
        \n\n
       ${fields.applicantName.split(" ")[0]},
        \n\n
-      Obrigado por reservar um tempo para se candidatar ao nosso cargo. Agradecemos seu interesse em trabalhar na HIO TECH como <Angariador de Clientes>.
+      Obrigado por reservar um tempo para se candidatar ao nosso cargo. Agradecemos seu interesse em trabalhar na HIO TECH como <Electricistas de Automóveis>.
        \n\n
-      No momento, estamos em processo de candidaturas para esta posição. Começaremos a fazer entrevistas nas próximas quatro semanas (apenas candidatos selecionados serão contactados). Se você for selecionado para continuar com o processo de entrevista, nosso departamento de recursos humanos entrará em contato com você até 20 de Junho de 2021.
+      No momento, estamos em processo de candidaturas para esta posição. Começaremos a fazer entrevistas nas próximas duas semanas (apenas candidatos selecionados serão contactados). Se você for selecionado para continuar com o processo de entrevista, nosso departamento de recursos humanos entrará em contato com você até 1 de Março de 2022.
        \n\n
       Obrigado,
        \n\n
