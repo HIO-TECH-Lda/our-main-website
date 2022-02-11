@@ -15,7 +15,7 @@
   --color-light: hsl(0, 0%, 100%);
   --color-bg-white: hsl(0, 0%, 100%);
   --color-dark-blue: hsl(238, 95%, 15%);
-  --color-dark-blue-1: hsl(238, 100%, 15%);
+  --color-dark-blue-1: hsl(238, 100%, 29%);
   --normal-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
 }
 
@@ -86,6 +86,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 8px;
   color: var(--color-text-dark);
+  display: inline-block;
 }
 
 .heading-2 {
@@ -93,6 +94,7 @@ body {
   font-size: 3.5rem;
   text-transform: uppercase;
   letter-spacing: 10px;
+  display: inline-block;
   color: var(--color-text-dark);
 }
 
@@ -100,12 +102,14 @@ body {
   font-weight: 700;
   font-size: 2.6rem;
   text-transform: capitalize;
+  display: inline-block;
   color: var(--color-text-dark);
 }
 
 .heading-4 {
   font-weight: 700;
   font-size: 2rem;
+  display: inline-block;
   text-transform: capitalize;
   color: var(--color-text-dark);
 }
@@ -138,6 +142,12 @@ body {
 
 .u-text-white {
   color: var(--color-text-white);
+}
+
+@media (max-width: 500px) {
+  h1, h2, h3, h4, h5 {
+    letter-spacing: unset !important;
+  }
 }
 
 .navbar {
@@ -342,6 +352,14 @@ body {
   margin-bottom: 3rem;
 }
 
+.u-mt-40 {
+  margin-top: 4rem;
+}
+
+.u-mb-40 {
+  margin-bottom: 4rem;
+}
+
 .switch {
   position: relative;
   display: inline-block;
@@ -416,6 +434,9 @@ body {
 .button:hover {
   background-color: var(--color-primary-1);
 }
+.button--full {
+  width: 100%;
+}
 .button--dark {
   background-color: var(--color-dark-blue);
 }
@@ -453,29 +474,34 @@ body {
 }
 
 .pricing__card {
-  padding: 2rem 1rem;
+  padding: 3rem;
   width: 100%;
-  background-color: var(--color-bg-white);
+  background-color: var(--color-dark-blue);
   border-radius: var(--rounded);
   overflow: hidden;
   box-shadow: var(--normal-shadow);
 }
 .pricing__item {
-  display: flex;
   width: 100%;
-  min-height: 5rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-light) !important;
+}
+.pricing__item:not(:last-child) {
+  margin-bottom: 2rem;
 }
 .pricing__title {
-  background-color: var(--color-grey-light-2);
+  background-color: var(--color-dark-blue-1);
   color: var(--color-text-dark);
   border-radius: var(--rounded);
   font-size: 2rem;
+  text-align: center;
+  padding: 2rem;
 }
 .pricing__list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  align-items: start;
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr));
+  gap: 6rem;
 }
 
 .contact__form {
