@@ -69,9 +69,9 @@ if (formStep2) {
        \n\n
       ${fields.applicantName.split(" ")[0]},
        \n\n
-      Obrigado por reservar um tempo para se candidatar ao nosso cargo. Agradecemos seu interesse em trabalhar na HIO TECH como <Electricistas de Automóveis>.
+      Obrigado por reservar um tempo para se candidatar ao nosso cargo. Agradecemos seu interesse em trabalhar na HIO TECH como <Agente  de Marketing>.
        \n\n
-      No momento, estamos em processo de candidaturas para esta posição. Começaremos a fazer entrevistas nas próximas duas semanas (apenas candidatos selecionados serão contactados). Se você for selecionado para continuar com o processo de entrevista, nosso departamento de recursos humanos entrará em contato com você até 1 de Março de 2022.
+      No momento, estamos em processo de candidaturas para esta posição. Começaremos a fazer entrevistas nas próximas duas semanas (apenas candidatos selecionados serão contactados). Se você for selecionado para continuar com o processo de entrevista, nosso departamento de recursos humanos entrará em contato com você até 3 de Março de 2022.
        \n\n
       Obrigado,
        \n\n
