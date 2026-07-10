@@ -179,7 +179,15 @@
           <a class="link" href="https://wa.me/258840000000">WhatsApp</a>
           <a class="link" href="https://empresaalvo.co.mz">Website da empresa</a>
           <a class="link" href="#">LinkedIn</a>
-          <a class="link" href="./empresa-alvo-demo.html">Voltar a este perfil depois</a>
+          <button
+            type="button"
+            class="link"
+            style="cursor: pointer; font: inherit; text-align: left"
+            data-profile-url="https://hiotech.co/nfc-business-cards/empresa-alvo-demo/"
+            onclick="copyProfileLink(this)"
+          >
+            Copiar link do perfil
+          </button>
         </div>
 
         <div class="box">
@@ -192,5 +200,42 @@
         </div>
       </section>
     </main>
+    <script>
+      async function copyProfileLink(button) {
+        const url = button.dataset.profileUrl || window.location.href;
+        let copied = false;
+
+        try {
+          if (navigator.clipboard?.writeText) {
+            await navigator.clipboard.writeText(url);
+            copied = true;
+          }
+        } catch {
+          copied = false;
+        }
+
+        if (!copied) {
+          const textarea = document.createElement("textarea");
+          textarea.value = url;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "fixed";
+          textarea.style.opacity = "0";
+          document.body.appendChild(textarea);
+          textarea.select();
+          try {
+            copied = document.execCommand("copy");
+          } catch {
+            copied = false;
+          }
+          document.body.removeChild(textarea);
+        }
+
+        const original = button.textContent;
+        button.textContent = copied ? "Link copiado!" : "Copie: " + url;
+        setTimeout(() => {
+          button.textContent = original;
+        }, 2500);
+      }
+    </script>
   </body>
 </html>

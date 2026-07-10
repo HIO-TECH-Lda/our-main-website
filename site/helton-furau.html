@@ -187,9 +187,14 @@
             download="helton-furau.vcf"
             >Guardar contacto</a
           >
-          <a class="btn btn-secondary" href="./helton-furau.html"
-            >Voltar a este perfil depois</a
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-profile-url="https://hiotech.co/nfc-business-cards/helton-furau/"
+            onclick="copyProfileLink(this)"
           >
+            Copiar link do perfil
+          </button>
         </div>
 
         <div class="links">
@@ -207,5 +212,42 @@
         </div>
       </section>
     </main>
+    <script>
+      async function copyProfileLink(button) {
+        const url = button.dataset.profileUrl || window.location.href;
+        let copied = false;
+
+        try {
+          if (navigator.clipboard?.writeText) {
+            await navigator.clipboard.writeText(url);
+            copied = true;
+          }
+        } catch {
+          copied = false;
+        }
+
+        if (!copied) {
+          const textarea = document.createElement("textarea");
+          textarea.value = url;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "fixed";
+          textarea.style.opacity = "0";
+          document.body.appendChild(textarea);
+          textarea.select();
+          try {
+            copied = document.execCommand("copy");
+          } catch {
+            copied = false;
+          }
+          document.body.removeChild(textarea);
+        }
+
+        const original = button.textContent;
+        button.textContent = copied ? "Link copiado!" : "Copie: " + url;
+        setTimeout(() => {
+          button.textContent = original;
+        }, 2500);
+      }
+    </script>
   </body>
 </html>

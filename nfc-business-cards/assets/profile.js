@@ -1,6 +1,14 @@
-function showToast() {
+function showToast(
+  title = "Contacto exportado",
+  subtitle = "vCard guardado com URL do perfil."
+) {
   const toast = document.getElementById("toast");
   if (!toast) return;
+
+  const titleEl = toast.querySelector("p.font-semibold");
+  const subtitleEl = toast.querySelector("p.text-xs");
+  if (titleEl) titleEl.textContent = title;
+  if (subtitleEl) subtitleEl.textContent = subtitle;
 
   toast.classList.remove("translate-y-20", "opacity-0");
   toast.classList.add("translate-y-0", "opacity-100");
@@ -9,6 +17,53 @@ function showToast() {
     toast.classList.remove("translate-y-0", "opacity-100");
     toast.classList.add("translate-y-20", "opacity-0");
   }, 3500);
+}
+
+async function copyTextToClipboard(text) {
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch {
+    // fall through to legacy copy
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.opacity = "0";
+  document.body.appendChild(textarea);
+  textarea.select();
+
+  let copied = false;
+  try {
+    copied = document.execCommand("copy");
+  } catch {
+    copied = false;
+  }
+
+  document.body.removeChild(textarea);
+  return copied;
+}
+
+async function copyProfileLink(profileKey) {
+  const url = getProfilePublicUrl(profileKey);
+  const copied = await copyTextToClipboard(url);
+
+  if (copied) {
+    showToast(
+      "Link copiado",
+      "Cole em mensagens ou favoritos para voltar a este perfil."
+    );
+    return;
+  }
+
+  showToast(
+    "Copie o link manualmente",
+    url
+  );
 }
 
 function foldVCardLine(line) {
@@ -248,13 +303,14 @@ function renderStandaloneProfile(profileKey) {
       '<i class="fa-solid fa-address-book"></i> Guardar Contacto';
     linksContainer.appendChild(saveBtn);
 
-    const returnBtn = document.createElement("a");
-    returnBtn.href = getProfilePublicUrl(profileKey);
-    returnBtn.className =
+    const copyLinkBtn = document.createElement("button");
+    copyLinkBtn.type = "button";
+    copyLinkBtn.onclick = () => copyProfileLink(profileKey);
+    copyLinkBtn.className =
       "block w-full p-3.5 bg-slate-900 border border-slate-800/80 rounded-2xl hover:border-slate-700 transition text-center text-xs font-bold text-slate-300";
-    returnBtn.innerHTML =
-      '<i class="fa-solid fa-link mr-1"></i> Voltar a este perfil depois';
-    linksContainer.appendChild(returnBtn);
+    copyLinkBtn.innerHTML =
+      '<i class="fa-solid fa-copy mr-1"></i> Copiar link do perfil';
+    linksContainer.appendChild(copyLinkBtn);
 
     data.links.forEach((link) => {
       linksContainer.appendChild(buildLinkCard(link));
@@ -263,7 +319,7 @@ function renderStandaloneProfile(profileKey) {
 
   const hint = document.getElementById("profile-return-hint");
   if (hint) {
-    hint.innerHTML = `<strong>Relacionamento digital contínuo:</strong> ao guardar este contacto, a URL deste perfil fica disponível no telemóvel para voltar a website, links e informações atualizadas.`;
+    hint.innerHTML = `<strong>Relacionamento digital contínuo:</strong> ao guardar este contacto, a URL deste perfil fica no telemóvel. Também pode <strong>copiar o link</strong> para partilhar ou guardar nos favoritos.`;
   }
 
   renderProfileQR("profile-qr", getProfilePublicUrl(profileKey));
