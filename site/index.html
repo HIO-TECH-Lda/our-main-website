@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HioTech NFC Business Cards</title>
+    <meta
+      name="description"
+      content="Cartões inteligentes com NFC e QR Code para empresas, equipas comerciais e profissionais que querem uma presença moderna e atualizável."
+    />
+    <style>
+      :root {
+        --bg: #0b1220;
+        --panel: #121a2b;
+        --panel-soft: #17233a;
+        --text: #eef4ff;
+        --muted: #a8b4c9;
+        --brand: #2bb3ff;
+        --brand-2: #7ae582;
+        --border: rgba(255, 255, 255, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(180deg, #09101c 0%, #0d1526 100%);
+        color: var(--text);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .hero {
+        padding: 72px 0 48px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 8px 12px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        font-size: 13px;
+        color: var(--brand);
+        background: rgba(43, 179, 255, 0.08);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin: 18px 0 18px;
+        font-size: clamp(2.2rem, 5vw, 4.4rem);
+        line-height: 1.05;
+      }
+
+      .hero p {
+        max-width: 760px;
+        color: var(--muted);
+        font-size: 1.08rem;
+        line-height: 1.7;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 18px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        font-weight: 700;
+      }
+
+      .btn-primary {
+        background: var(--brand);
+        color: #04111f;
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+
+      .section {
+        padding: 20px 0 40px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 24px;
+      }
+
+      .card p,
+      .card li {
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      ul {
+        padding-left: 20px;
+        margin-bottom: 0;
+      }
+
+      .demo-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .demo-link {
+        display: inline-block;
+        padding: 12px 16px;
+        border-radius: 12px;
+        background: var(--panel-soft);
+        border: 1px solid var(--border);
+      }
+
+      .footer {
+        padding: 30px 0 60px;
+        color: var(--muted);
+      }
+
+      .highlight {
+        color: var(--brand-2);
+        font-weight: 700;
+      }
+
+      .note-box {
+        margin-top: 18px;
+        padding: 18px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="container">
+          <span class="eyebrow">Novo serviço HioTech</span>
+          <h1>NFC Business Cards para empresas que querem causar melhor impressão</h1>
+          <p>
+            <strong>Transformar um contacto estático em relacionamento digital contínuo.</strong>
+          </p>
+          <p>
+            A HioTech transforma o cartão de visita tradicional numa experiência
+            digital moderna com <strong>NFC + QR Code + perfil online</strong>.
+            Em vez de imprimir cartões sempre que um contacto muda, a empresa
+            passa a ter perfis atualizáveis, partilha instantânea e uma presença
+            mais profissional em reuniões, eventos e visitas comerciais.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://hiotech.co/contacte-nos"
+              >Pedir demonstração</a
+            >
+            <a class="btn btn-secondary" href="#como-funciona">Ver como funciona</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="como-funciona">
+        <div class="container grid grid-3">
+          <article class="card">
+            <h3>1. Toque ou scan</h3>
+            <p>
+              O cartão pode ser usado por aproximação NFC ou por QR Code, tornando
+              a partilha simples e rápida em praticamente qualquer smartphone.
+            </p>
+          </article>
+          <article class="card">
+            <h3>2. Perfil digital abre instantaneamente</h3>
+            <p>
+              A pessoa recebe acesso ao perfil profissional com nome, cargo,
+              contactos, website, WhatsApp, LinkedIn e outros links úteis.
+            </p>
+          </article>
+          <article class="card">
+            <h3>3. Dados atualizáveis</h3>
+            <p>
+              Sempre que houver mudança de email, telefone, cargo ou website, o
+              conteúdo pode ser atualizado sem substituir o cartão físico.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container grid grid-2">
+          <article class="card">
+            <h2>Por que trocar o cartão de papel?</h2>
+            <ul>
+              <li>Cartões tradicionais ficam desatualizados rapidamente.</li>
+              <li>Há custos recorrentes de reimpressão.</li>
+              <li>O destinatário precisa digitar manualmente os contactos.</li>
+              <li>Não existe medição real de uso ou interesse.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h2>O que a HioTech entrega</h2>
+            <ul>
+              <li>Cartão físico personalizado com NFC e QR Code.</li>
+              <li>Página digital individual por colaborador.</li>
+              <li>Layout ajustado à marca da empresa cliente.</li>
+              <li>Evolução futura para gestão centralizada e analytics.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container card">
+          <h2>Guardar contacto sem perder acesso ao perfil</h2>
+          <p>
+            O objetivo desta solução não é apenas salvar um número no telefone.
+            Cada perfil funciona como um hub digital com links e informações
+            atualizáveis.
+          </p>
+          <ul>
+            <li>O botão de guardar contacto pode incluir a URL do perfil no vCard.</li>
+            <li>Ao abrir o contacto salvo, a pessoa pode voltar ao perfil público.</li>
+            <li>Isso permite revisitar website, LinkedIn, Instagram e outros links depois.</li>
+            <li>O cartão físico continua servindo como acesso rápido por NFC e QR Code.</li>
+          </ul>
+          <div class="note-box">
+            Em vez de entregar apenas um contacto estático, a HioTech passa a
+            oferecer um ponto de acesso contínuo à presença digital do
+            colaborador e da empresa.
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container grid grid-3">
+          <article class="card">
+            <h3>Imagem moderna</h3>
+            <p>
+              Um cartão inteligente mostra inovação, profissionalismo e atenção à
+              experiência do cliente.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Mais valor por cartão</h3>
+            <p>
+              O cartão deixa de ser apenas um objeto impresso e passa a ser um
+              ponto de entrada para a presença digital da empresa.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Escalável para equipas</h3>
+            <p>
+              A mesma solução pode ser usada por diretores, comerciais, gestores
+              de conta e atendimento ao cliente.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container card">
+          <h2>Protótipos deste piloto</h2>
+          <p>
+            Este projeto inicial foi preparado para validar o serviço com
+            <span class="highlight">2 cartões blank</span>:
+          </p>
+          <ul>
+            <li>um cartão para o perfil HioTech;</li>
+            <li>um cartão para um colaborador de uma empresa-alvo.</li>
+          </ul>
+          <div class="demo-links">
+            <a class="demo-link" href="./helton-furau.html">Perfil HioTech</a>
+            <a class="demo-link" href="./empresa-alvo-demo.html"
+              >Perfil colaborador demo</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container card">
+          <h2>Pronto para publicar no site</h2>
+          <p>
+            Estas páginas foram desenhadas em HTML simples para facilitar a
+            publicação rápida no website da HioTech ou em qualquer subdiretório
+            do domínio.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://hiotech.co/">Visitar HioTech</a>
+            <a class="btn btn-secondary" href="mailto:info@hiotech.co"
+              >Falar com a equipa</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        HioTech NFC Business Cards pilot. Conteúdo inicial para validação e publicação.
+      </div>
+    </footer>
+  </body>
+</html>

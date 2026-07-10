@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Helton Furau | HioTech Smart Card</title>
+    <meta
+      name="description"
+      content="Perfil digital profissional HioTech para partilha rápida de contactos, website e canais digitais."
+    />
+    <style>
+      :root {
+        --bg: #0d1320;
+        --panel: #141d30;
+        --text: #f1f6ff;
+        --muted: #aab7ca;
+        --brand: #2bb3ff;
+        --border: rgba(255, 255, 255, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: radial-gradient(circle at top, #11203b 0%, #0b1220 55%);
+        color: var(--text);
+      }
+
+      .wrap {
+        width: min(760px, calc(100% - 24px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      .card {
+        background: rgba(20, 29, 48, 0.98);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      }
+
+      .top {
+        display: grid;
+        grid-template-columns: 88px 1fr;
+        gap: 18px;
+        align-items: center;
+      }
+
+      .avatar {
+        width: 88px;
+        height: 88px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #2bb3ff, #72e2ae);
+        color: #062033;
+        font-size: 30px;
+        font-weight: 700;
+      }
+
+      h1,
+      h2,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 8px;
+      }
+
+      .role,
+      .company,
+      .intro,
+      .note {
+        color: var(--muted);
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 22px 0;
+      }
+
+      .chip {
+        padding: 10px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+        font-size: 14px;
+      }
+
+      .actions,
+      .links {
+        display: grid;
+        gap: 12px;
+      }
+
+      .actions {
+        margin: 24px 0 18px;
+      }
+
+      .btn,
+      .link {
+        display: block;
+        width: 100%;
+        padding: 15px 16px;
+        border-radius: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        border: 1px solid var(--border);
+      }
+
+      .btn-primary {
+        background: var(--brand);
+        color: #07131f;
+      }
+
+      .btn-secondary,
+      .link {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .section {
+        margin-top: 24px;
+      }
+
+      .footer {
+        margin-top: 28px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      .info-box {
+        margin: 20px 0 24px;
+        padding: 16px;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .info-box strong {
+        color: var(--text);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="card">
+        <div class="top">
+          <div class="avatar">HF</div>
+          <div>
+            <h1>Helton Furau</h1>
+            <p class="role">CEO / Founder / Technology Solutions</p>
+            <p class="company">HioTech</p>
+          </div>
+        </div>
+
+        <p class="intro section">
+          Soluções tecnológicas para empresas: desenvolvimento web e mobile,
+          plataformas digitais, suporte técnico, design e transformação digital.
+        </p>
+
+        <div class="chips">
+          <span class="chip">Desenvolvimento Web</span>
+          <span class="chip">Aplicativos</span>
+          <span class="chip">Design</span>
+          <span class="chip">Consultoria</span>
+        </div>
+
+        <div class="info-box">
+          <strong>Guardar contacto sem perder o perfil:</strong>
+          ao salvar este contacto, o telefone pode manter o link do perfil no
+          próprio contacto. Assim, no dia seguinte, a pessoa pode voltar a esta
+          página para abrir website, WhatsApp e outras informações atualizadas.
+        </div>
+
+        <div class="actions">
+          <a
+            class="btn btn-primary"
+            href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AN%3AFurau%3BHelton%0AFN%3AHelton%20Furau%0AORG%3AHioTech%0ATITLE%3ACEO%20%2F%20Founder%0ATEL%3BTYPE%3DCELL%3A%2B258875554622%0AEMAIL%3Ainfo%40hiotech.co%0AURL%3Ahttps%3A%2F%2Fhiotech.co%2Fnfc-business-cards%2Fhelton-furau.html%0ANOTE%3APerfil%20digital%20HioTech%20com%20links%20e%20informacoes%20atualizadas.%0AEND%3AVCARD"
+            download="helton-furau.vcf"
+            >Guardar contacto</a
+          >
+          <a class="btn btn-secondary" href="./helton-furau.html"
+            >Voltar a este perfil depois</a
+          >
+        </div>
+
+        <div class="links">
+          <a class="link" href="tel:+258875554622">Telefone: +258 87 555 4622</a>
+          <a class="link" href="mailto:info@hiotech.co">Email: info@hiotech.co</a>
+          <a class="link" href="https://wa.me/258875554622">WhatsApp</a>
+          <a class="link" href="https://hiotech.co/">Website</a>
+          <a class="link" href="#">LinkedIn</a>
+          <a class="link" href="./index.html">Ver serviço NFC Business Cards</a>
+        </div>
+
+        <div class="footer">
+          Este perfil funciona como hub digital. O contacto salvo pode incluir a
+          URL desta página para facilitar o retorno posterior.
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

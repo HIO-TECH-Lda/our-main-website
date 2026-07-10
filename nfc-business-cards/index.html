@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFC Business Cards | Cartões Inteligentes HioTech - Moçambique</title>
+    <meta name="description" content="Cartões de visita inteligentes com NFC e QR Code para empresas em Moçambique. Perfis digitais atualizáveis, vCard com link permanente e branding corporativo. Solução HioTech.">
+    <meta name="keywords" content="cartão NFC, business card digital, cartão de visita inteligente, NFC Moçambique, QR Code, perfil digital, HioTech, Beira, networking corporativo, cartão inteligente">
+    <meta name="author" content="HioTech">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hiotech.co/nfc-business-cards/">
+    <link rel="icon" type="image/png" href="../img/hiotech.jpg">
+    <meta property="og:locale" content="pt_MZ">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="NFC Business Cards | HioTech">
+    <meta property="og:description" content="Transforme um contacto estático em relacionamento digital contínuo com cartões NFC + QR Code e perfis digitais para equipas comerciais.">
+    <meta property="og:url" content="https://hiotech.co/nfc-business-cards/">
+    <meta property="og:site_name" content="HioTech">
+    <meta property="og:image" content="https://hiotech.co/nfc-business-cards/assets/hiot-nfc-card-product.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@hio_tech">
+    <meta name="twitter:title" content="NFC Business Cards | HioTech">
+    <meta name="twitter:description" content="Cartões inteligentes NFC + QR Code com perfil digital atualizável para empresas em Moçambique.">
+    <meta name="twitter:image" content="https://hiotech.co/nfc-business-cards/assets/hiot-nfc-card-product.jpg">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "HioTech NFC Business Cards",
+      "serviceType": "Cartões de visita digitais com NFC e QR Code",
+      "provider": {
+        "@type": "Organization",
+        "name": "HioTech",
+        "url": "https://hiotech.co",
+        "logo": "https://hiotech.co/img/hiotech_logo.png",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Beira",
+          "addressCountry": "MZ"
+        },
+        "telephone": "+258875554622",
+        "email": "info@hiotech.co"
+      },
+      "description": "Solução corporativa de cartões inteligentes com NFC, QR Code e perfis digitais atualizáveis para equipas comerciais.",
+      "areaServed": "MZ",
+      "url": "https://hiotech.co/nfc-business-cards/"
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0B0F19',
+                            slate: '#1E293B',
+                            accent: '#0EA5E9',
+                            blue: '#2563EB',
+                            success: '#10B981',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth transitions & custom glowing effects */
+        .glow-blue {
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.15);
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 30px rgba(14, 165, 233, 0.3);
+            transform: translateY(-2px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nfc-wave {
+            animation: wave 2s infinite ease-out;
+        }
+        @keyframes wave {
+            0% { transform: scale(0.95); opacity: 1; }
+            100% { transform: scale(1.6); opacity: 0; }
+        }
+        .phone-mockup {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0F19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen">
+
+    <!-- Toast notification container -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 ease-out pointer-events-none">
+        <div class="bg-slate-900 border border-emerald-500/30 text-emerald-400 px-5 py-3 rounded-xl flex items-center gap-3 shadow-2xl backdrop-blur-md">
+            <div class="bg-emerald-500/20 p-2 rounded-lg">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div>
+                <p class="font-semibold text-sm">Contacto Exportado!</p>
+                <p class="text-xs text-slate-400">vCard guardado com sucesso.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN SITE WRAPPER (This will be hidden if standalone profile routing is active) -->
+    <div id="main-portal">
+        <!-- Header / Navbar -->
+        <header class="border-b border-slate-800/80 sticky top-0 bg-brand-dark/90 backdrop-blur-md z-40 transition-all">
+            <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+                <!-- Logo -->
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <img src="../img/hiotech_logo.png" alt="HioTech" class="h-10 w-auto group-hover:scale-105 transition-transform duration-300">
+                    <div>
+                        <span class="font-extrabold text-xl tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">HioTech</span>
+                        <span class="block text-[10px] uppercase tracking-widest text-brand-accent font-bold">NFC Business Cards</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav links -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                    <a href="#como-funciona" class="hover:text-white transition">Como Funciona</a>
+                    <a href="#para-quem" class="hover:text-white transition">Para Quem</a>
+                    <a href="#retorno" class="hover:text-white transition">Estratégia de Retorno</a>
+                    <a href="#planos" class="hover:text-white transition">Preços e Planos</a>
+                    <a href="#faq" class="hover:text-white transition">FAQ</a>
+                    <a href="#simulador" class="hover:text-white transition flex items-center gap-1.5 text-brand-accent">
+                        <span class="w-2 h-2 bg-brand-accent rounded-full animate-ping"></span>
+                        Demonstração Live
+                    </a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="flex items-center gap-3">
+                    <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-900 transition">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <a href="#simulador" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-slate-800 hover:bg-slate-700 rounded-lg transition">
+                        Ver Demos
+                    </a>
+                    <a href="https://wa.me/258875554622" target="_blank" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-brand-blue to-brand-accent hover:from-blue-700 hover:to-cyan-600 rounded-xl shadow-lg transition transform active:scale-95">
+                        Falar com Consultor
+                    </a>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800/80 bg-brand-dark/95 backdrop-blur-md">
+                <nav class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-3 text-sm font-medium text-slate-300">
+                    <a href="#como-funciona" class="hover:text-white transition py-1">Como Funciona</a>
+                    <a href="#para-quem" class="hover:text-white transition py-1">Para Quem</a>
+                    <a href="#retorno" class="hover:text-white transition py-1">Estratégia de Retorno</a>
+                    <a href="#simulador" class="hover:text-white transition py-1 text-brand-accent">Demonstração Live</a>
+                    <a href="#planos" class="hover:text-white transition py-1">Preços e Planos</a>
+                    <a href="#faq" class="hover:text-white transition py-1">FAQ</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="landing" class="relative py-20 lg:py-32 overflow-hidden border-b border-slate-900">
+            <!-- Background Gradients -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-blue/10 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="absolute top-1/3 right-10 w-[300px] h-[300px] bg-brand-accent/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                    
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs font-semibold text-brand-accent">
+                            <span class="w-2 h-2 bg-brand-accent rounded-full animate-pulse"></span>
+                            LANÇAMENTO CORPORATIVO HIOTECH
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-white">
+                            O último cartão de visitas que a sua empresa <span class="bg-gradient-to-r from-brand-blue via-brand-accent to-emerald-400 bg-clip-text text-transparent">precisará comprar</span>.
+                        </h1>
+                        <p class="text-base sm:text-lg text-white font-semibold max-w-2xl mx-auto lg:mx-0">
+                            Transformar um contacto estático em relacionamento digital contínuo.
+                        </p>
+                        <p class="text-lg text-slate-400 max-w-2xl mx-auto lg:mx-0">
+                            Conecte a sua equipa ao mercado com cartões inteligentes de tecnologia combinada <span class="text-white font-semibold">NFC + QR Code</span> e perfil digital dinâmico. Atualize contactos e redes sociais remotamente em segundos.
+                        </p>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <a href="#simulador" class="px-8 py-4 bg-gradient-to-r from-brand-blue to-brand-accent rounded-xl text-white font-bold hover:opacity-90 shadow-xl shadow-brand-blue/20 transition flex items-center justify-center gap-3 group">
+                                Experimentar Simulador
+                                <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                            <a href="#como-funciona" class="px-8 py-4 bg-slate-900 border border-slate-800 text-slate-300 font-bold hover:text-white rounded-xl hover:bg-slate-800 transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-circle-play text-brand-accent"></i>
+                                Como funciona?
+                            </a>
+                        </div>
+
+                        <!-- Mini stats or trust factors -->
+                        <div class="pt-8 border-t border-slate-900 grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0 text-left">
+                            <div>
+                                <span class="block text-2xl sm:text-3xl font-extrabold text-white">100%</span>
+                                <span class="text-xs text-slate-500">Ecológico & Durável</span>
+                            </div>
+                            <div>
+                                <span class="block text-2xl sm:text-3xl font-extrabold text-white">Zero</span>
+                                <span class="text-xs text-slate-500">Desperdício de Papel</span>
+                            </div>
+                            <div>
+                                <span class="block text-2xl sm:text-3xl font-extrabold text-white">1 Seg</span>
+                                <span class="text-xs text-slate-500">Transmissão Sem Fios</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Hero Card Display -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-full max-w-lg group">
+                            <div class="absolute -inset-6 bg-brand-blue/15 rounded-3xl blur-3xl pointer-events-none opacity-80 group-hover:opacity-100 transition"></div>
+                            <img
+                                src="assets/hiot-nfc-card-product.jpg"
+                                alt="Cartão NFC HioTech — Helton Furau, com toque NFC, QR Code e perfil digital"
+                                class="relative w-full rounded-2xl shadow-2xl border border-slate-800/80 object-cover glow-blue"
+                                width="1024"
+                                height="576"
+                            >
+                            <p class="relative mt-4 text-center text-[11px] text-slate-500">Cartão físico NFC + QR Code · URL fixa gravada no chip</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- The Problem & Solution Section -->
+        <section id="como-funciona" class="py-20 bg-slate-950">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <h2 class="text-xs uppercase tracking-widest text-brand-accent font-bold">Inovação e Praticidade</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Porquê trocar o papel pela HioTech?</p>
+                    <p class="text-slate-400">O cartão tradicional de papel gera custos infinitos e vai parar ao lixo. O nosso hub digital transforma o primeiro aperto de mão num contacto contínuo.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="bg-slate-900/60 border border-slate-800 p-8 rounded-2xl glow-hover transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-brand-accent text-xl mb-6">
+                            <i class="fa-solid fa-address-card"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-3">Toque NFC Instantâneo</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Basta aproximar o cartão físico HioTech na traseira de qualquer smartphone moderno. Sem aplicações, sem fricção, o perfil digital abre-se instantaneamente no navegador do cliente.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="bg-slate-900/60 border border-slate-800 p-8 rounded-2xl glow-hover transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 text-xl mb-6">
+                            <i class="fa-solid fa-qrcode"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-3">QR Code Inteligente</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Para telemóveis mais antigos ou leituras à distância, o cartão inclui um QR Code impresso no verso que direciona para a mesma página dinâmica de perfil.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="bg-slate-900/60 border border-slate-800 p-8 rounded-2xl glow-hover transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl mb-6">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-3">Painel e Atualizações</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Mudou de telefone, de cargo ou de empresa? Na fase piloto, a equipa HioTech actualiza os dados por si. Nos planos corporativos, evolui para gestão centralizada e painel administrativo.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="bg-slate-900/60 border border-slate-800 p-8 rounded-2xl glow-hover transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 text-xl mb-6">
+                            <i class="fa-solid fa-link"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-3">vCard com Link Permanente</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Ao guardar o contacto, o cliente recebe um vCard com a URL do perfil digital. Meses depois, pode voltar ao hub com links, portefólio e agendamento sempre actualizados.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases Section -->
+        <section id="para-quem" class="py-20 border-b border-slate-900">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <h2 class="text-xs uppercase tracking-widest text-brand-accent font-bold">Casos de Uso</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Para quem é esta solução?</p>
+                    <p class="text-slate-400">Equipas que precisam de causar impacto no primeiro contacto e manter a conversa viva depois do aperto de mão.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl">
+                        <div class="w-10 h-10 rounded-lg bg-brand-blue/20 flex items-center justify-center text-brand-accent mb-4">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <h3 class="font-bold text-white mb-2">Equipas Comerciais</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Vendedores e consultores que participam em feiras, visitas e reuniões - partilham contacto e portefólio em segundos.</p>
+                    </div>
+                    <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <h3 class="font-bold text-white mb-2">Diretores e Fundadores</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Executivos que representam a marca em eventos de alto nível e precisam de presença digital impecável e memorável.</p>
+                    </div>
+                    <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl">
+                        <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 mb-4">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <h3 class="font-bold text-white mb-2">Atendimento e Suporte</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Equipas de front-office com contacto directo ao cliente - WhatsApp, email e links úteis sempre à mão.</p>
+                    </div>
+                    <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl">
+                        <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400 mb-4">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
+                        <h3 class="font-bold text-white mb-2">Empresas em Escala</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Organizações com dezenas de colaboradores - branding uniforme, perfis individuais e actualização centralizada.</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 flex flex-wrap items-center justify-center gap-6 text-center">
+                    <div class="flex items-center gap-2 text-xs text-slate-500">
+                        <i class="fa-solid fa-circle-check text-brand-accent"></i>
+                        Piloto activo com cartões NFC reais
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-slate-500">
+                        <i class="fa-solid fa-circle-check text-brand-accent"></i>
+                        Demos personalizadas para sectores como logística e serviços
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-slate-500">
+                        <i class="fa-solid fa-circle-check text-brand-accent"></i>
+                        Desenvolvido pela HioTech em Moçambique
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategy of Return Section -->
+        <section id="retorno" class="py-20 border-b border-slate-900">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    
+                    <!-- Strategy Description -->
+                    <div class="space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs font-semibold text-brand-accent">
+                            EXCLUSIVO HIOTECH
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                            A Estratégia de Retorno:<br>Relacionamento digital contínuo
+                        </h2>
+                        <p class="text-slate-400 leading-relaxed">
+                            O maior erro dos cartões NFC comuns é terminar a experiência quando o cliente clica em "Salvar". Ele salva o contacto na agenda e nunca mais regressa à sua presença digital.
+                        </p>
+                        
+                        <!-- Core Strategy Loop -->
+                        <div class="space-y-4 pt-4">
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 rounded-full bg-brand-accent/20 flex items-center justify-center text-brand-accent font-bold shrink-0 text-sm">1</div>
+                                <div>
+                                    <h4 class="font-bold text-white">vCard com Link Dinâmico</h4>
+                                    <p class="text-slate-400 text-sm">Ao exportar o contacto para a agenda do cliente, injetamos a URL do seu perfil público no campo 'Website' e notas do contacto.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 rounded-full bg-brand-accent/20 flex items-center justify-center text-brand-accent font-bold shrink-0 text-sm">2</div>
+                                <div>
+                                    <h4 class="font-bold text-white">Acesso Contínuo e Futuro</h4>
+                                    <p class="text-slate-400 text-sm">No dia seguinte ou meses depois, ao abrir o seu contacto na agenda, o cliente tem acesso direto ao seu website atualizado, catálogo de soluções e agendamentos.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual flow diagram -->
+                    <div class="bg-slate-900 border border-slate-800 p-8 rounded-2xl relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-brand-blue/5 to-transparent pointer-events-none"></div>
+                        <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                            <i class="fa-solid fa-diagram-project text-brand-accent"></i>
+                            O Loop do Relacionamento Digital
+                        </h3>
+
+                        <div class="space-y-6 relative">
+                            <!-- Arrow track lines -->
+                            <div class="absolute left-6 top-6 bottom-6 w-0.5 border-l-2 border-dashed border-slate-800"></div>
+
+                            <!-- Flow step 1 -->
+                            <div class="flex gap-4 items-center relative z-10">
+                                <div class="w-12 h-12 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center text-slate-300">
+                                    <i class="fa-solid fa-mobile-screen"></i>
+                                </div>
+                                <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800/80 grow">
+                                    <p class="text-xs font-semibold text-white">Scan do Cartão NFC / QR Code</p>
+                                    <p class="text-[11px] text-slate-500">Abre o perfil com links de serviços e portfolio.</p>
+                                </div>
+                            </div>
+
+                            <!-- Flow step 2 -->
+                            <div class="flex gap-4 items-center relative z-10">
+                                <div class="w-12 h-12 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center text-slate-300">
+                                    <i class="fa-solid fa-file-arrow-down"></i>
+                                </div>
+                                <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800/80 grow">
+                                    <p class="text-xs font-semibold text-white">Clique em "Guardar Contacto"</p>
+                                    <p class="text-[11px] text-slate-500">O telemóvel transfere o vCard contendo o seu URL dinâmico.</p>
+                                </div>
+                            </div>
+
+                            <!-- Flow step 3 -->
+                            <div class="flex gap-4 items-center relative z-10">
+                                <div class="w-12 h-12 rounded-xl bg-brand-blue/20 border border-brand-blue/50 flex items-center justify-center text-brand-accent">
+                                    <i class="fa-solid fa-arrows-spin animate-spin-slow"></i>
+                                </div>
+                                <div class="bg-brand-blue/10 p-3 rounded-xl border border-brand-blue/20 grow">
+                                    <p class="text-xs font-semibold text-brand-accent">O Retorno Estratégico</p>
+                                    <p class="text-[11px] text-slate-300">O cliente clica no link do contacto e vê o seu portefólio atualizado.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Live Simulator Section -->
+        <section id="simulador" class="py-20 bg-slate-950">
+            <div class="max-w-7xl mx-auto px-6">
+                
+                <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                    <span class="text-xs uppercase tracking-widest text-brand-accent font-bold">Experimente Agora</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Simulador de Perfis Inteligentes</h2>
+                    <p class="text-slate-400">Experimente o perfil digital real da HioTech no simulador móvel abaixo. Demonstrações personalizadas para empresas são preparadas sob consulta.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-12 items-start">
+                    
+                    <!-- Left: Control Panel (Simulator Controllers) -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                            <h3 class="text-lg font-bold text-white mb-4">Perfil em demonstração:</h3>
+                            
+                            <div class="p-4 rounded-xl border text-left bg-brand-blue/10 border-brand-blue text-white">
+                                <div class="flex items-center gap-3">
+                                    <div id="sim-panel-avatar-helton" class="w-10 h-10 rounded-full overflow-hidden border-2 border-brand-accent bg-slate-900 flex items-center justify-center text-brand-accent font-bold text-sm shrink-0">
+                                        HF
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm">Helton Furau</h4>
+                                        <p class="text-[10px] text-slate-400">HioTech - perfil comercial</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Info details about the current selected demo -->
+                        <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-4">
+                            <h4 class="font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-circle-info text-brand-accent"></i>
+                                Detalhes do perfil
+                            </h4>
+                            <div id="sim-info-helton" class="space-y-3">
+                                <p class="text-sm text-slate-400">
+                                    Perfil institucional e comercial da HioTech com competências, portefólio, contactos e agendamento. Ideal para networking, eventos e visitas comerciais.
+                                </p>
+                                <div class="bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs text-slate-500 font-mono">
+                                    <p><strong class="text-slate-300">NFC URL:</strong> hiotech.co/nfc-business-cards/helton-furau/</p>
+                                    <p class="mt-1"><strong class="text-slate-300">Cargo:</strong> CEO / Founder / Technology Solutions</p>
+                                    <p class="mt-1"><strong class="text-slate-300">Branding:</strong> HioTech Dark Blue</p>
+                                </div>
+                                <a href="helton-furau/" class="inline-flex items-center gap-1.5 text-xs text-brand-accent hover:underline font-semibold">
+                                    Ver Perfil em Ecrã Inteiro <i class="fa-solid fa-up-right-from-square"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Fast Action Call -->
+                        <div class="p-6 bg-gradient-to-tr from-brand-blue/20 to-brand-accent/20 border border-brand-blue/30 rounded-2xl">
+                            <h4 class="font-bold text-white text-md">Quer testar com o seu próprio telemóvel?</h4>
+                            <p class="text-xs text-slate-300 mt-1">Abra a câmara e faça a leitura do QR Code que está ativo dentro do ecrã do simulador ao lado!</p>
+                        </div>
+
+                        <div class="p-6 bg-slate-900 border border-slate-800 rounded-2xl">
+                            <h4 class="font-bold text-white text-md">Demonstração para a sua empresa</h4>
+                            <p class="text-xs text-slate-400 mt-2 leading-relaxed">Preparamos perfis e cartões com branding personalizado para apresentações comerciais. Fale connosco para ver um exemplo adaptado à sua organização.</p>
+                            <a href="https://wa.me/258875554622" target="_blank" class="inline-flex items-center gap-2 mt-4 text-xs font-semibold text-brand-accent hover:underline">
+                                Solicitar demo personalizada <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: The Interactive Mobile Frame Simulator -->
+                    <div class="lg:col-span-7 flex justify-center">
+                        <div class="relative w-[340px] h-[680px] bg-slate-950 rounded-[48px] border-[8px] border-slate-800 shadow-2xl phone-mockup overflow-hidden flex flex-col">
+                            
+                            <!-- Phone Top Bar (Speaker & Dynamic Island) -->
+                            <div class="absolute top-0 inset-x-0 h-8 bg-slate-950 z-30 flex items-center justify-between px-8">
+                                <span class="text-[10px] font-medium text-slate-400">11:30</span>
+                                <div class="w-16 h-4 bg-black rounded-full"></div>
+                                <div class="flex items-center gap-1">
+                                    <i class="fa-solid fa-signal text-[9px] text-slate-400"></i>
+                                    <i class="fa-solid fa-wifi text-[9px] text-slate-400"></i>
+                                    <i class="fa-solid fa-battery-three-quarters text-[9px] text-slate-400"></i>
+                                </div>
+                            </div>
+
+                            <!-- Simulator Screen Content -->
+                            <div class="flex-1 overflow-y-auto mt-8 pb-4 relative" id="simulator-screen-container">
+                                <!-- The Dynamic content will be injected or rendered here via Javascript or simple switch -->
+                                
+                                <!-- Simulating Helton Inside the Phone Frame -->
+                                <div id="simulated-profile-helton" class="w-full min-h-full bg-slate-950 text-white flex flex-col">
+                                    <!-- Embedded Profile Body -->
+                                    <div class="relative h-28 bg-gradient-to-br from-brand-blue to-slate-900 w-full flex items-end justify-center">
+                                        <div class="absolute top-4 left-4">
+                                            <span class="text-[10px] uppercase font-bold text-brand-accent tracking-widest">HioTech</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Avatar Overlay -->
+                                    <div class="flex flex-col items-center -mt-12 px-6 pb-6 relative z-10 text-center">
+                                        <div id="sim-avatar-helton" class="w-24 h-24 rounded-full border-4 border-slate-950 overflow-hidden shadow-xl bg-slate-800 flex items-center justify-center">
+                                            <svg viewBox="0 0 100 100" class="w-full h-full fill-current text-brand-accent">
+                                                <circle cx="50" cy="35" r="20" />
+                                                <path d="M50 60c-25 0-35 15-35 25h70c0-10-10-25-35-25z" />
+                                            </svg>
+                                        </div>
+                                        
+                                        <h3 class="text-xl font-bold mt-3 text-white">Helton Furau</h3>
+                                        <p class="text-xs text-brand-accent font-semibold">CEO / Founder / Technology Solutions</p>
+                                        <p class="text-[10px] text-slate-400 mt-1">Beira, Moçambique</p>
+
+                                        <!-- Bio -->
+                                        <p class="text-xs text-slate-300 mt-3 italic">
+                                            "Soluções tecnológicas para empresas: desenvolvimento web e mobile, plataformas digitais e transformação digital."
+                                        </p>
+
+                                        <div class="flex flex-wrap justify-center gap-2 mt-3">
+                                            <span class="px-2.5 py-1 rounded-full border border-slate-800 bg-slate-900/60 text-[10px] text-slate-300">Desenvolvimento Web</span>
+                                            <span class="px-2.5 py-1 rounded-full border border-slate-800 bg-slate-900/60 text-[10px] text-slate-300">Aplicativos</span>
+                                            <span class="px-2.5 py-1 rounded-full border border-slate-800 bg-slate-900/60 text-[10px] text-slate-300">Design</span>
+                                            <span class="px-2.5 py-1 rounded-full border border-slate-800 bg-slate-900/60 text-[10px] text-slate-300">Consultoria</span>
+                                        </div>
+
+                                        <!-- Quick Action Icon Row -->
+                                        <div class="flex gap-4 my-4">
+                                            <a href="tel:+258875554622" class="w-10 h-10 rounded-full bg-slate-900 hover:bg-slate-800 flex items-center justify-center border border-slate-800 text-brand-accent transition">
+                                                <i class="fa-solid fa-phone"></i>
+                                            </a>
+                                            <a href="mailto:info@hiotech.co" class="w-10 h-10 rounded-full bg-slate-900 hover:bg-slate-800 flex items-center justify-center border border-slate-800 text-brand-accent transition">
+                                                <i class="fa-solid fa-envelope"></i>
+                                            </a>
+                                            <a href="https://wa.me/258875554622" class="w-10 h-10 rounded-full bg-slate-900 hover:bg-slate-800 flex items-center justify-center border border-slate-800 text-brand-accent transition">
+                                                <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                                            </a>
+                                        </div>
+
+                                        <!-- Strategic Action Buttons (Linktree style) -->
+                                        <div class="w-full space-y-3 text-left">
+                                            <button onclick="triggerSaveContact('helton')" class="w-full py-3 bg-gradient-to-r from-brand-blue to-brand-accent rounded-xl text-center font-bold text-sm text-white shadow-lg flex items-center justify-center gap-2 hover:opacity-90">
+                                                <i class="fa-solid fa-address-book"></i> Guardar Contacto
+                                            </button>
+                                            
+                                            <a href="https://hiotech.co" target="_blank" class="block w-full p-3.5 bg-slate-900 border border-slate-800/80 rounded-xl hover:border-slate-700 transition">
+                                                <div class="flex items-center gap-3">
+                                                    <i class="fa-solid fa-globe text-brand-accent"></i>
+                                                    <div>
+                                                        <p class="text-xs font-bold text-white">Website Oficial HioTech</p>
+                                                        <p class="text-[9px] text-slate-500">Conheça os nossos serviços</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+
+                                            <a href="https://hiotech.co/portfolio.html" target="_blank" class="block w-full p-3.5 bg-slate-900 border border-slate-800/80 rounded-xl hover:border-slate-700 transition">
+                                                <div class="flex items-center gap-3">
+                                                    <i class="fa-solid fa-briefcase text-brand-accent"></i>
+                                                    <div>
+                                                        <p class="text-xs font-bold text-white">Portfólio HioTech</p>
+                                                        <p class="text-[9px] text-slate-500">Projetos e trabalhos recentes</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+
+                                            <a href="https://wa.me/258875554622" target="_blank" class="block w-full p-3.5 bg-slate-900 border border-slate-800/80 rounded-xl hover:border-slate-700 transition">
+                                                <div class="flex items-center gap-3">
+                                                    <i class="fa-solid fa-calendar-days text-emerald-400"></i>
+                                                    <div>
+                                                        <p class="text-xs font-bold text-white">Agendar uma Reunião</p>
+                                                        <p class="text-[9px] text-slate-500">Marque diretamente via WhatsApp</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <!-- QR Code for sharing directly from screen -->
+                                        <div class="mt-6 border-t border-slate-900 pt-6 w-full flex flex-col items-center">
+                                            <p class="text-[10px] text-slate-500 uppercase tracking-widest font-semibold mb-2">Partilhar este Perfil</p>
+                                            <div id="sim-qr-helton" class="bg-white p-2 rounded-xl shadow-lg inline-flex items-center justify-center"></div>
+                                            <p class="text-[9px] text-slate-600 mt-2">QR real - aponta para /helton-furau/</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing / Business Model Section -->
+        <section id="planos" class="py-20 border-t border-slate-900">
+            <div class="max-w-7xl mx-auto px-6">
+                
+                <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                    <span class="text-xs uppercase tracking-widest text-brand-accent font-bold">Investimento Sustentável</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Planos e Modelos de Parceria</h2>
+                    <p class="text-slate-400">Implemente soluções ágeis na sua equipa de vendas. Substitua o orçamento gráfico de cartões por uma assinatura digital escalável.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Plan 1: Individual / Teste -->
+                    <div class="bg-slate-900/40 border border-slate-800 p-8 rounded-2xl relative flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-brand-accent uppercase tracking-widest">Teste Piloto</span>
+                            <h3 class="text-2xl font-bold text-white mt-2">Kit Inicial</h3>
+                            <p class="text-slate-400 text-sm mt-3 leading-relaxed">Ideal para validar a tecnologia no mercado com cartões reais e perfis digitais geridos pela equipa HioTech.</p>
+                            
+                            <div class="my-6 border-y border-slate-800 py-6">
+                                <span class="text-4xl font-extrabold text-white">Sob orçamento</span>
+                                <p class="text-xs text-slate-500 mt-1">Pacote piloto personalizado</p>
+                            </div>
+
+                            <ul class="space-y-3.5 text-sm text-slate-300">
+                                <li class="flex items-center gap-2.5">
+                                    <i class="fa-solid fa-circle-check text-brand-accent text-xs"></i>
+                                    2x Cartões Físicos NFC (blank ou gravados)
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <i class="fa-solid fa-circle-check text-brand-accent text-xs"></i>
+                                    Perfis digitais com URL fixa (NFC + QR)
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <i class="fa-solid fa-circle-check text-brand-accent text-xs"></i>
+                                    vCard com link permanente ao perfil
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <i class="fa-solid fa-circle-check text-brand-accent text-xs"></i>
+                                    Actualização de dados pela equipa HioTech
+                                </li>
+                                <li class="flex items-center gap-2.5 text-slate-500">
+                                    <i class="fa-solid fa-circle-xmark text-xs"></i>
+                                    Painel self-service (fase futura)
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/258875554622" class="block w-full py-3.5 bg-slate-850 hover:bg-slate-800 text-center font-bold text-sm text-white rounded-xl mt-8 border border-slate-700 transition">
+                            Adquirir Kit Piloto
+                        </a>
+                    </div>
+
+                    <!-- Plan 2: Corporativo Equipa (Most Popular) -->
+                    <div class="bg-gradient-to-b from-brand-blue/10 to-slate-900/60 border-2 border-brand-accent p-8 rounded-2xl relative flex flex-col justify-between shadow-xl relative">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-brand-accent text-white text-[10px] font-extrabold rounded-full uppercase tracking-widest">Recomendado</div>
+                        
+                        <div>
+                            <span class="text-xs font-bold text-brand-accent uppercase tracking-widest">Corporativo</span>
+                            <h3 class="text-2xl font-bold text-white mt-2">Equipa Comercial</h3>
+                            <p class="text-slate-300 text-sm mt-3 leading-relaxed">Para equipas de consultoria, vendas e executivos que necessitam de forte impacto comercial.</p>
+                            
+                            <div class="my-6 border-y border-brand-blue/20 py-6">
+                                <span class="text-4xl font-extrabold text-white">Sob consulta</span>
+                                <p class="text-xs text-brand-accent mt-1">Escalável por número de colaboradores</p>
+                            </div>
+
+                            <ul class="space-y-3.5 text-sm text-slate-200">
+                                <li class="flex items-center gap-2.5">
+                                    <i class="fa-solid fa-circle-check text-brand-accent text-xs"></i>
+                                    Cartões físicos personalizados (logo gravado)
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <i class="fa-solid fa-circle-check text-brand-accent text-xs"></i>
+                                    Perfis digitais individuais com branding corporativo
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <i class="fa-solid fa-circle-check text-brand-accent text-xs"></i>
+                                    Estratégia de retorno (vCard + hub actualizável)
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <i class="fa-solid fa-circle-check text-brand-accent text-xs"></i>
+                                    Gestão centralizada de perfis pela HioTech
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <i class="fa-solid fa-circle-check text-brand-accent text-xs"></i>
+                                    Suporte técnico dedicado
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/258875554622" class="block w-full py-3.5 bg-gradient-to-r from-brand-blue to-brand-accent hover:opacity-90 text-center font-bold text-sm text-white rounded-xl mt-8 transition">
+                            Solicitar Proposta Comercial
+                        </a>
+                    </div>
+
+                    <!-- Plan 3: Enterprise Custom -->
+                    <div class="bg-slate-900/40 border border-slate-800 p-8 rounded-2xl relative flex flex-col justify-between lg:col-span-1 md:col-span-2">
+                        <div>
+                            <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">Enterprise</span>
+                            <h3 class="text-2xl font-bold text-white mt-2">Solução à Medida</h3>
+                            <p class="text-slate-400 text-sm mt-3 leading-relaxed">Para grandes corporações que necessitam de integrações profundas com CRM, ERP ou infraestruturas próprias.</p>
+                            
+                            <div class="my-6 border-y border-slate-800 py-6">
+                                <span class="text-4xl font-extrabold text-white">Customizado</span>
+                                <p class="text-xs text-slate-500 mt-1">Conforme requisitos técnicos</p>
+                            </div>
+
+                            <ul class="space-y-3.5 text-sm text-slate-300">
+                                <li class="flex items-center gap-2.5">
+                                    <i class="fa-solid fa-circle-check text-brand-accent text-xs"></i>
+                                    Hospedagem e Domínio Próprio do Cliente
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <i class="fa-solid fa-circle-check text-brand-accent text-xs"></i>
+                                    Integração direta com Salesforce, HubSpot ou Zoho
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <i class="fa-solid fa-circle-check text-brand-accent text-xs"></i>
+                                    Dashboard de Analytics com estatísticas avançadas
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <i class="fa-solid fa-circle-check text-brand-accent text-xs"></i>
+                                    SLA de Suporte Técnico de 4 Horas
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/258875554622" class="block w-full py-3.5 bg-slate-850 hover:bg-slate-800 text-center font-bold text-sm text-white rounded-xl mt-8 border border-slate-700 transition">
+                            Falar com Arquiteto de Soluções
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-20 bg-slate-950 border-t border-slate-900">
+            <div class="max-w-3xl mx-auto px-6">
+                <div class="text-center mb-12 space-y-4">
+                    <span class="text-xs uppercase tracking-widest text-brand-accent font-bold">Perguntas Frequentes</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Dúvidas comuns</h2>
+                    <p class="text-slate-400">Respostas rápidas antes de pedir uma proposta ou iniciar o piloto.</p>
+                </div>
+
+                <div class="space-y-3">
+                    <details class="group bg-slate-900/60 border border-slate-800 rounded-xl p-5 open:border-brand-accent/30">
+                        <summary class="font-semibold text-white cursor-pointer list-none flex items-center justify-between gap-4">
+                            Funciona em iPhone e Android?
+                            <i class="fa-solid fa-chevron-down text-brand-accent text-sm transition group-open:rotate-180"></i>
+                        </summary>
+                        <p class="text-slate-400 text-sm mt-4 leading-relaxed">Sim. A maioria dos smartphones modernos lê NFC na traseira do telemóvel (iPhone 7 ou superior e Android com NFC activo). Para telemóveis sem NFC ou leituras à distância, o QR Code impresso no cartão abre o mesmo perfil digital.</p>
+                    </details>
+
+                    <details class="group bg-slate-900/60 border border-slate-800 rounded-xl p-5 open:border-brand-accent/30">
+                        <summary class="font-semibold text-white cursor-pointer list-none flex items-center justify-between gap-4">
+                            Preciso de instalar uma aplicação?
+                            <i class="fa-solid fa-chevron-down text-brand-accent text-sm transition group-open:rotate-180"></i>
+                        </summary>
+                        <p class="text-slate-400 text-sm mt-4 leading-relaxed">Não. O cartão abre o perfil directamente no navegador do telemóvel. O cliente pode guardar o contacto com um toque e voltar ao perfil mais tarde através do link incluído no vCard.</p>
+                    </details>
+
+                    <details class="group bg-slate-900/60 border border-slate-800 rounded-xl p-5 open:border-brand-accent/30">
+                        <summary class="font-semibold text-white cursor-pointer list-none flex items-center justify-between gap-4">
+                            O que está incluído no Kit Piloto?
+                            <i class="fa-solid fa-chevron-down text-brand-accent text-sm transition group-open:rotate-180"></i>
+                        </summary>
+                        <p class="text-slate-400 text-sm mt-4 leading-relaxed">Cartões NFC físicos, gravação da URL fixa, perfil digital personalizado, QR Code, vCard com link permanente e suporte da HioTech para actualizações durante o piloto. Ideal para validar a solução antes de escalar para toda a equipa.</p>
+                    </details>
+
+                    <details class="group bg-slate-900/60 border border-slate-800 rounded-xl p-5 open:border-brand-accent/30">
+                        <summary class="font-semibold text-white cursor-pointer list-none flex items-center justify-between gap-4">
+                            Posso actualizar telefone, cargo ou links depois?
+                            <i class="fa-solid fa-chevron-down text-brand-accent text-sm transition group-open:rotate-180"></i>
+                        </summary>
+                        <p class="text-slate-400 text-sm mt-4 leading-relaxed">Sim - esse é o principal benefício. O cartão físico mantém a mesma URL; o conteúdo do perfil digital é actualizado remotamente. Na fase piloto, a HioTech faz as alterações por si. Nos planos corporativos, a gestão evolui para um modelo centralizado.</p>
+                    </details>
+
+                    <details class="group bg-slate-900/60 border border-slate-800 rounded-xl p-5 open:border-brand-accent/30">
+                        <summary class="font-semibold text-white cursor-pointer list-none flex items-center justify-between gap-4">
+                            Quanto tempo demora a implementação?
+                            <i class="fa-solid fa-chevron-down text-brand-accent text-sm transition group-open:rotate-180"></i>
+                        </summary>
+                        <p class="text-slate-400 text-sm mt-4 leading-relaxed">O piloto pode estar activo em poucos dias após confirmação do branding e dados dos colaboradores. Projectos corporativos com múltiplos perfis e personalização avançada seguem um cronograma acordado na proposta comercial.</p>
+                    </details>
+
+                    <details class="group bg-slate-900/60 border border-slate-800 rounded-xl p-5 open:border-brand-accent/30">
+                        <summary class="font-semibold text-white cursor-pointer list-none flex items-center justify-between gap-4">
+                            Em que é diferente de um cartão NFC básico?
+                            <i class="fa-solid fa-chevron-down text-brand-accent text-sm transition group-open:rotate-180"></i>
+                        </summary>
+                        <p class="text-slate-400 text-sm mt-4 leading-relaxed">Cartões NFC simples apenas partilham um link ou vCard estático. A solução HioTech inclui um hub digital completo, vCard com URL permanente para retorno futuro, branding corporativo, QR Code de backup e estratégia de relacionamento contínuo - não apenas um contacto que se perde na agenda.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section id="contacto" class="py-20 border-t border-slate-900 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-brand-blue/10 via-transparent to-brand-accent/5 pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <span class="text-xs uppercase tracking-widest text-brand-accent font-bold">Próximo passo</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                            Pronto para testar com a sua equipa?
+                        </h2>
+                        <p class="text-slate-400 leading-relaxed">
+                            Comece com um piloto real: cartão NFC físico, perfil digital activo e demonstração personalizada para o seu sector. Fale connosco por WhatsApp ou email - respondemos com proposta e cronograma.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="https://wa.me/258875554622" target="_blank" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-blue to-brand-accent rounded-xl text-white font-bold hover:opacity-90 shadow-xl transition">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                                WhatsApp: +258 87 555 4622
+                            </a>
+                            <a href="mailto:info@hiotech.co" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-slate-900 border border-slate-800 text-slate-300 font-bold rounded-xl hover:text-white hover:bg-slate-800 transition">
+                                <i class="fa-solid fa-envelope"></i>
+                                info@hiotech.co
+                            </a>
+                        </div>
+                        <p class="text-xs text-slate-500">
+                            <i class="fa-solid fa-location-dot mr-1"></i>
+                            Beira, Moçambique · Piloto activo · Demos sob consulta
+                        </p>
+                    </div>
+
+                    <!-- Physical + Digital product visual -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <img
+                            src="assets/hiot-nfc-card-product.jpg"
+                            alt="Cartão NFC físico HioTech"
+                            class="w-full max-w-[300px] rounded-2xl shadow-2xl border border-slate-700 object-cover shrink-0"
+                            width="1024"
+                            height="576"
+                        >
+
+                        <div class="hidden sm:flex flex-col items-center text-slate-600">
+                            <i class="fa-solid fa-plus text-lg mb-2"></i>
+                            <div class="w-px h-16 bg-slate-800"></div>
+                        </div>
+
+                        <div class="w-full max-w-[200px] bg-slate-900 border border-slate-800 rounded-2xl p-4 text-center shadow-xl">
+                            <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-brand-accent mx-auto mb-3">
+                                <img src="helton-furau/helton-furau.jpg" alt="Perfil digital" class="w-full h-full object-cover">
+                            </div>
+                            <p class="text-xs font-bold text-white">Perfil Digital</p>
+                            <p class="text-[10px] text-slate-500 mt-1">Hub com links, vCard e QR</p>
+                            <a href="helton-furau/" class="inline-flex items-center gap-1 mt-3 text-[10px] text-brand-accent font-semibold hover:underline">
+                                Ver exemplo <i class="fa-solid fa-arrow-right text-[8px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="border-t border-slate-900 bg-slate-950 py-12">
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <img src="../img/hiotech_logo.png" alt="HioTech" class="h-8 w-auto">
+                        <span class="font-extrabold text-lg text-white">HioTech</span>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Inovação, desenvolvimento e design de soluções corporativas de ponta para empresas em Moçambique e no mundo.
+                    </p>
+                </div>
+                
+                <div>
+                    <h5 class="text-sm font-bold text-white mb-4">Soluções</h5>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li><a href="../index.html" class="hover:text-white transition">HioTech Corporativo</a></li>
+                        <li><a href="index.html" class="hover:text-white transition">NFC Business Cards</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-sm font-bold text-white mb-4">Links Úteis</h5>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li><a href="#como-funciona" class="hover:text-white transition">Como Funciona</a></li>
+                        <li><a href="#para-quem" class="hover:text-white transition">Para Quem</a></li>
+                        <li><a href="#simulador" class="hover:text-white transition">Simulador Live</a></li>
+                        <li><a href="#planos" class="hover:text-white transition">Planos e Preços</a></li>
+                        <li><a href="#faq" class="hover:text-white transition">FAQ</a></li>
+                        <li><a href="helton-furau/" class="hover:text-white transition">Perfil HioTech</a></li>
+                        <li><a href="../index.html" class="hover:text-white transition">Website HioTech</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-sm font-bold text-white mb-4">Contactos</h5>
+                    <p class="text-xs text-slate-400">Beira, Moçambique</p>
+                    <p class="text-xs text-slate-400 mt-1">E-mail: info@hiotech.co</p>
+                    <p class="text-xs text-slate-400">Tel / WhatsApp: +258 87 555 4622</p>
+                </div>
+            </div>
+            <div class="max-w-7xl mx-auto px-6 pt-8 mt-8 border-t border-slate-900/60 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+                <p>© 2026 HioTech. Todos os direitos reservados.</p>
+                <p>Soluções digitais para empresas em Moçambique.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+    <script src="assets/profiles.js"></script>
+    <script src="assets/profile.js"></script>
+    <script>
+        window.onload = function () {
+            initLandingPage();
+        };
+    </script>
+</body>
+</html>

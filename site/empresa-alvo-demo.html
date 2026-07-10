@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colaborador Demo | Smart Business Card</title>
+    <meta
+      name="description"
+      content="Exemplo de perfil digital para colaborador de uma empresa cliente usando cartão de visita inteligente com NFC e QR Code."
+    />
+    <style>
+      :root {
+        --bg: #f4f7fb;
+        --panel: #ffffff;
+        --text: #162033;
+        --muted: #5f6b80;
+        --brand: #0d6efd;
+        --border: #dfe7f4;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(180deg, #eef4ff 0%, #f8fbff 100%);
+        color: var(--text);
+      }
+
+      .wrap {
+        width: min(760px, calc(100% - 24px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 16px 40px rgba(39, 76, 119, 0.08);
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 8px 12px;
+        background: #ecf4ff;
+        border: 1px solid #d9e8ff;
+        color: var(--brand);
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .top {
+        display: grid;
+        grid-template-columns: 88px 1fr;
+        gap: 18px;
+        align-items: center;
+        margin-top: 18px;
+      }
+
+      .avatar {
+        width: 88px;
+        height: 88px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #0d6efd, #6fb1ff);
+        color: white;
+        font-size: 30px;
+        font-weight: 700;
+      }
+
+      h1,
+      h2,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 8px;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .section {
+        margin-top: 24px;
+      }
+
+      .actions,
+      .links {
+        display: grid;
+        gap: 12px;
+      }
+
+      .btn,
+      .link {
+        display: block;
+        padding: 15px 16px;
+        border-radius: 14px;
+        text-decoration: none;
+        border: 1px solid var(--border);
+      }
+
+      .btn {
+        font-weight: 700;
+        background: var(--brand);
+        color: white;
+      }
+
+      .link {
+        color: var(--text);
+        background: #f8fbff;
+      }
+
+      .box {
+        margin-top: 24px;
+        padding: 18px;
+        border-radius: 16px;
+        background: #f8fbff;
+        border: 1px solid var(--border);
+      }
+
+      .hint {
+        margin: 20px 0 24px;
+        padding: 16px;
+        border-radius: 16px;
+        background: #f1f7ff;
+        border: 1px solid #d9e8ff;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="card">
+        <span class="badge">Demo para empresa-alvo</span>
+
+        <div class="top">
+          <div class="avatar">AM</div>
+          <div>
+            <h1>Ana Mucavele</h1>
+            <p class="muted">Business Development Manager</p>
+            <p class="muted">Empresa Alvo, Lda.</p>
+          </div>
+        </div>
+
+        <p class="muted section">
+          Exemplo de perfil digital que pode ser usado por um colaborador da
+          empresa cliente para partilhar contactos, website institucional e
+          canais profissionais com um simples toque NFC.
+        </p>
+
+        <div class="hint">
+          <strong>Importante:</strong>
+          o contacto salvo pode incluir o link deste perfil. Isso permite que a
+          pessoa volte depois para rever website, LinkedIn, WhatsApp e outras
+          informações sem depender de um novo scan.
+        </div>
+
+        <div class="actions section">
+          <a
+            class="btn"
+            href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AN%3AMucavele%3BAna%0AFN%3AAna%20Mucavele%0AORG%3AEmpresa%20Alvo%2C%20Lda.%0ATITLE%3ABusiness%20Development%20Manager%0ATEL%3BTYPE%3DCELL%3A%2B258840000000%0AEMAIL%3Aana%40empresaalvo.co.mz%0AURL%3Ahttps%3A%2F%2Fhiotech.co%2Fnfc-business-cards%2Fempresa-alvo-demo.html%0ANOTE%3APerfil%20digital%20demonstrativo%20com%20links%20e%20informacoes%20atualizadas.%0AEND%3AVCARD"
+            download="ana-mucavele.vcf"
+            >Guardar contacto</a
+          >
+        </div>
+
+        <div class="links">
+          <a class="link" href="tel:+258840000000">Telefone: +258 84 000 0000</a>
+          <a class="link" href="mailto:ana@empresaalvo.co.mz"
+            >Email: ana@empresaalvo.co.mz</a
+          >
+          <a class="link" href="https://wa.me/258840000000">WhatsApp</a>
+          <a class="link" href="https://empresaalvo.co.mz">Website da empresa</a>
+          <a class="link" href="#">LinkedIn</a>
+          <a class="link" href="./empresa-alvo-demo.html">Voltar a este perfil depois</a>
+        </div>
+
+        <div class="box">
+          <h2>Como usar este segundo cartão</h2>
+          <p class="muted">
+            Use este cartão como demonstração comercial. Assim, quando apresentar
+            a proposta, você mostra um cenário real: um cartão para a HioTech e
+            outro para um colaborador da empresa cliente.
+          </p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
