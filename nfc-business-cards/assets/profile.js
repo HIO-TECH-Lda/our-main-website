@@ -11,36 +11,108 @@ function showToast() {
   }, 3500);
 }
 
-function triggerSaveContact(profileKey) {
+function foldVCardLine(line) {
+  const maxLength = 75;
+  if (line.length <= maxLength) return line;
+
+  let folded = line.slice(0, maxLength);
+  let remainder = line.slice(maxLength);
+
+  while (remainder.length > 0) {
+    folded += `\r\n ${remainder.slice(0, maxLength - 1)}`;
+    remainder = remainder.slice(maxLength - 1);
+  }
+
+  return folded;
+}
+
+function getPhotoMimeType(filename) {
+  const ext = filename.split(".").pop()?.toLowerCase();
+  if (ext === "png") return "PNG";
+  if (ext === "webp") return "WEBP";
+  return "JPEG";
+}
+
+async function loadProfilePhotoBase64(profileKey) {
   const data = profilesData[profileKey];
-  if (!data) return;
+  if (!data?.photo) return null;
 
-  const profileUrl = getProfilePublicUrl(profileKey);
+  const photoUrl = getProfilePhotoPublicUrl(profileKey);
+  if (!photoUrl) return null;
 
-  const vcard = `BEGIN:VCARD
-VERSION:3.0
-FN:${data.name}
-N:${data.name.split(" ").reverse().join(";")};;;
-ORG:${data.company}
-TITLE:${data.role}
-TEL;TYPE=CELL;TYPE=VOICE;TYPE=PREF:${data.phone}
-EMAIL;TYPE=PREF;TYPE=INTERNET:${data.email}
-URL;TYPE=WORK:${profileUrl}
-NOTE:Perfil digital HioTech - use o campo Website para voltar a este hub com links atualizados.
-END:VCARD`;
+  try {
+    const response = await fetch(photoUrl);
+    if (!response.ok) return null;
 
+    const blob = await response.blob();
+    const buffer = await blob.arrayBuffer();
+    const bytes = new Uint8Array(buffer);
+    let binary = "";
+
+    for (let i = 0; i < bytes.length; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+
+    return {
+      base64: btoa(binary),
+      type: getPhotoMimeType(data.photo),
+    };
+  } catch {
+    return null;
+  }
+}
+
+function buildVCard(data, profileUrl, photo) {
+  const lines = [
+    "BEGIN:VCARD",
+    "VERSION:3.0",
+    `FN:${data.name}`,
+    `N:${data.name.split(" ").reverse().join(";")};;;`,
+    `ORG:${data.company}`,
+    `TITLE:${data.role}`,
+    `TEL;TYPE=CELL;TYPE=VOICE;TYPE=PREF:${data.phone}`,
+    `EMAIL;TYPE=PREF;TYPE=INTERNET:${data.email}`,
+    `URL;TYPE=WORK:${profileUrl}`,
+  ];
+
+  if (photo?.base64) {
+    lines.push(
+      foldVCardLine(`PHOTO;ENCODING=b;TYPE=${photo.type}:${photo.base64}`)
+    );
+  }
+
+  lines.push(
+    "NOTE:Perfil digital HioTech - use o campo Website para voltar a este hub com links atualizados.",
+    "END:VCARD"
+  );
+
+  return lines.join("\r\n");
+}
+
+function downloadVCard(vcard, filename) {
   const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8;" });
   const downloadUrl = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = downloadUrl;
-  link.setAttribute(
-    "download",
-    `${data.name.toLowerCase().replace(/\s+/g, "_")}.vcf`
-  );
+  link.setAttribute("download", filename);
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
   URL.revokeObjectURL(downloadUrl);
+}
+
+async function triggerSaveContact(profileKey) {
+  const data = profilesData[profileKey];
+  if (!data) return;
+
+  const profileUrl = getProfilePublicUrl(profileKey);
+  const photo = await loadProfilePhotoBase64(profileKey);
+  const vcard = buildVCard(data, profileUrl, photo);
+
+  downloadVCard(
+    vcard,
+    `${data.name.toLowerCase().replace(/\s+/g, "_")}.vcf`
+  );
 
   showToast();
 }

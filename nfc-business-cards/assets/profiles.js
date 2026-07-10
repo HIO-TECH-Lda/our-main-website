@@ -132,6 +132,28 @@ function getProfilePhotoPath(profileKey) {
   return page ? `${page}${data.photo}` : data.photo;
 }
 
+function getProfilePhotoPublicUrl(profileKey) {
+  const data = profilesData[profileKey];
+  if (!data?.photo) return null;
+
+  const page = PROFILE_PAGES[profileKey];
+  const photoPath = getProfilePhotoPath(profileKey);
+  if (!photoPath) return null;
+
+  const onProfilePage =
+    page &&
+    (window.location.pathname.endsWith(page) ||
+      window.location.pathname.endsWith(`${page}index.html`) ||
+      window.location.href.includes(`${page}index.html`));
+
+  if (window.location.protocol === "file:") {
+    const relativePhoto = onProfilePage ? data.photo : photoPath;
+    return new URL(relativePhoto, window.location.href).href;
+  }
+
+  return `${window.location.origin}${NFC_BASE_PATH}${photoPath}`;
+}
+
 function getProfilePublicUrl(profileKey) {
   const page = PROFILE_PAGES[profileKey];
   if (!page) return window.location.href;
